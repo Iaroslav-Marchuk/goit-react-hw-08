@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.text {
+  font-size: 48px;
+  text-align: center;
+  line-height: 1.5;
+}

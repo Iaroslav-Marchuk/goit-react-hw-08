@@ -5,7 +5,7 @@ import { deleteContact } from "../../redux/contacts/operations";
 
 import css from "./Contact.module.css";
 
-export default function Contact({ data: { name, number, id } }) {
+const Contact = ({ data: { name, number, id } }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
@@ -31,4 +31,6 @@ export default function Contact({ data: { name, number, id } }) {
       </button>
     </div>
   );
-}
+};
+
+export default Contact;
