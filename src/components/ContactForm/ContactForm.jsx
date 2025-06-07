@@ -1,12 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useId } from "react";
-
 import { useDispatch } from "react-redux";
+import * as Yup from "yup";
+
 import { addContact } from "../../redux/contacts/operations";
 
 import css from "./ContactForm.module.css";
-
-import * as Yup from "yup";
 
 export default function ContactForm() {
   const nameFieldId = useId();
@@ -49,12 +48,7 @@ export default function ContactForm() {
         <label className={css.label} htmlFor={nameFieldId}>
           Name
         </label>
-        <Field
-          className={css.input}
-          type="text"
-          name="name"
-          id={nameFieldId}
-        ></Field>
+        <Field className={css.input} type="text" name="name" id={nameFieldId} />
         <ErrorMessage className={css.error} name="name" component="span" />
 
         <label className={css.label} htmlFor={numberFieldId}>
@@ -65,7 +59,7 @@ export default function ContactForm() {
           type="text"
           name="number"
           id={numberFieldId}
-        ></Field>
+        />
         <ErrorMessage className={css.error} name="number" component="span" />
 
         <button className={css.btn} type="submit">

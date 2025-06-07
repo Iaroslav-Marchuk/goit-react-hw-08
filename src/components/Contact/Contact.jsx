@@ -12,8 +12,6 @@ const Contact = ({ data: { name, number, id } }) => {
     dispatch(deleteContact(id));
   };
 
-  deleteContact;
-
   return (
     <div className={css.card}>
       <div className={css.info}>

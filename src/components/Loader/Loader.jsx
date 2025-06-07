@@ -1,6 +1,6 @@
-import css from "./Loader.module.css";
-
 import { ScaleLoader } from "react-spinners";
+
+import css from "./Loader.module.css";
 
 export default function Loader({ loadingState }) {
   return (
