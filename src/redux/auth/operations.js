@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axiosAPI from "../../api";
+import axiosAPI from "../../service/api";
 
 const setAuthHeader = (token) => {
   axiosAPI.defaults.headers.common.Authorization = `Bearer ${token}`;

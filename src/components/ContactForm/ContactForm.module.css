@@ -33,7 +33,8 @@
   margin: 0 auto;
   width: 120px;
   padding: 10px 16px;
-  background-color: #ead07b;
+  color: #fff;
+  background-color: #c4a000;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -41,11 +42,13 @@
 }
 
 .btn:hover {
-  background-color: #968858;
+  background-color: #997800;
+  transform: translateY(2px);
 }
 
 .btn:active {
-  transform: scale(0.98);
+  background-color: #735e00;
+  transform: translateY(3px);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 

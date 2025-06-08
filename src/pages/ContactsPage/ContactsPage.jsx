@@ -3,7 +3,7 @@ import css from "./ContactsPage.module.css";
 import {
   selectContacts,
   selectError,
-  selectLoading,
+  selectIsLoading,
 } from "../../redux/contacts/selectors";
 import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contacts/operations";
@@ -16,11 +16,11 @@ import Loader from "../../components/Loader/Loader";
 const ContactsPage = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectLoading);
+  const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchContacts);
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (

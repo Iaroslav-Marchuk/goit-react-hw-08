@@ -1,0 +1,23 @@
+.container {
+  background-color: bisque;
+  padding: 24px;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 24px auto;
+  color: #7f6f33;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 2px 8px rgba(150, 136, 88, 0.15);
+  line-height: 1.6;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: #968858;
+}
+
+p {
+  margin-bottom: 16px;
+  font-size: 1rem;
+}

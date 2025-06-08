@@ -1,9 +1,36 @@
 .wrapper {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  align-items: center; /* вертикальне вирівнювання по центру */
+  gap: 16px;
+  /* background-color: transparent; */ /* без фону */
+  color: #7f6f33;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .username {
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 16px;
+  color: #968858;
+  user-select: none;
+  margin: 0; /* щоб не було зайвих відступів */
+}
+
+.btn {
+  background-color: transparent; /* без фону */
+  border: 1.5px solid #968858;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #7f6f33;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #968858;
+  color: #f3eec3;
+  outline: none;
+  box-shadow: 0 0 6px #968858aa;
 }

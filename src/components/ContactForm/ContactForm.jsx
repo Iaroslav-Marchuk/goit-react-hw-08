@@ -26,12 +26,13 @@ export default function ContactForm() {
     name: Yup.string()
       .min(3, "Min 3 chars")
       .max(30, "Max 50 chars")
+      .matches(
+        /^[a-zA-Zа-яА-ЯёЁїЇіІєЄґҐ\s'-]+$/,
+        "Name can only contain letters, spaces, apostrophes and dashes"
+      )
       .required("This is a required field"),
     number: Yup.string()
-      .matches(
-        /^\d{3}-\d{2}-\d{2}$/,
-        "Phone number must be in format 123-45-67"
-      )
+      .matches(/^\d{9}$/, "Phone number must be exactly 9 digits")
       .required("Phone number is required"),
   });
 

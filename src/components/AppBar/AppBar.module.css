@@ -1,7 +1,18 @@
 .header {
+  background-color: bisque; /* Світлий блідий жовтий фон */
+  padding: 12px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
-  border-bottom: 1px solid #2a363b;
+  box-shadow: 0 2px 6px rgba(150, 136, 88, 0.2); /* Легка тінь з відтінком жовтого */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #7f6f33; /* Темно-жовтий колір тексту */
+  user-select: none;
 }
+
+/* .header a {
+  color: #7f6f33;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease-in-out;
+} */

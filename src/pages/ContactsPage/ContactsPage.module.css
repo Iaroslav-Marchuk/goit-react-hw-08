@@ -1,18 +1,31 @@
 .wrapper {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 16px;
+  background-color: bisque;
+  /* max-width: 600px; */
+  margin: 30px auto;
+  padding: 24px 32px;
+  border-radius: 10px;
+
+  box-shadow: 0 4px 10px rgba(150, 136, 88, 0.15);
+  color: #7f6f33;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
-  margin-bottom: 20px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #968858;
+  text-align: center;
 }
 
 .noResults {
-  font-size: 18px;
-  color: #999;
-  text-align: center;
   margin-top: 20px;
+  text-align: center;
+  font-style: italic;
+  color: #a79853;
+  font-weight: 600;
 }
