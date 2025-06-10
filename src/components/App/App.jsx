@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { lazy, Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 import Layout from "../Layout/Layout";
 
@@ -15,7 +16,7 @@ const ContactsPage = lazy(() =>
 );
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const LoginPage = lazy(() => import("../../pages/LoginPage/LoginPage"));
-const ProfilePage = lazy(() => import("../..//pages/ProfilePage/ProfilePage"));
+const ProfilePage = lazy(() => import("../../pages/ProfilePage/ProfilePage"));
 const RegistrationPage = lazy(() =>
   import("../../pages/RegistrationPage/RegistrationPage")
 );
@@ -67,6 +68,7 @@ function App() {
           />
         </Routes>
       </Suspense>
+      <Toaster position="top-right" reverseOrder={false} />
     </Layout>
   );
 }

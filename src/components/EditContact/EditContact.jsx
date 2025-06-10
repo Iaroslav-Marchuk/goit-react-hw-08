@@ -1,22 +1,45 @@
-import Modal from "../Modal/Modal";
-
-import { FaUser, FaPhone } from "react-icons/fa";
-
-import { editContact } from "../../redux/contacts/operations";
-import { useId } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-
+import { useId } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
 import * as Yup from "yup";
 
+import Modal from "../Modal/Modal";
+
+import { editContact } from "../../redux/contacts/operations";
+import { selectContacts } from "../../redux/contacts/selectors";
+
 import css from "./EditContact.module.css";
-import { useDispatch } from "react-redux";
 
 const EditContact = ({ contact, onClose }) => {
   const nameFieldId = useId();
   const numberFieldId = useId();
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
   const handleSave = async (values, actions) => {
+    if (
+      values.name.trim() === contact.name.trim() &&
+      values.number.trim() === contact.number.trim()
+    ) {
+      toast.error("Contact unchanged.");
+      actions.setSubmitting(false);
+      return;
+    }
+
+    const isDuplicate = contacts.some(
+      (cont) =>
+        cont.id !== contact.id &&
+        cont.name.toLowerCase() === values.name.toLowerCase() &&
+        cont.number === values.number
+    );
+
+    if (isDuplicate) {
+      toast.error("This contact already exists!");
+      actions.setSubmitting(false);
+      return;
+    }
+
     try {
       await dispatch(
         editContact({
@@ -25,11 +48,11 @@ const EditContact = ({ contact, onClose }) => {
         })
       ).unwrap();
 
+      toast.success("Contact saved succesfully!");
       actions.resetForm();
       onClose();
     } catch (error) {
-      alert("Error updating contact: " + error);
-      actions.setSubmitting(false);
+      toast.error("Failed to add contact." + error);
     }
   };
 
@@ -40,7 +63,7 @@ const EditContact = ({ contact, onClose }) => {
   const FeedbackSchema = Yup.object().shape({
     name: Yup.string()
       .min(3, "Min 3 chars")
-      .max(30, "Max 50 chars")
+      .max(30, "Max 30 chars")
       .matches(
         /^[a-zA-Zа-яА-ЯёЁїЇіІєЄґҐ\s'-]+$/,
         "Name can only contain letters, spaces, apostrophes and dashes"
@@ -64,32 +87,38 @@ const EditContact = ({ contact, onClose }) => {
         <Form className={css.form}>
           <label className={css.label} htmlFor={nameFieldId}>
             Name
+            <Field
+              className={css.input}
+              type="text"
+              name="name"
+              id={nameFieldId}
+            />
           </label>
-          <Field
-            className={css.input}
-            type="text"
-            name="name"
-            id={nameFieldId}
-          />
           <ErrorMessage className={css.error} name="name" component="span" />
 
           <label className={css.label} htmlFor={numberFieldId}>
             Number
+            <Field
+              className={css.input}
+              type="tel"
+              name="number"
+              id={numberFieldId}
+            />
           </label>
-          <Field
-            className={css.input}
-            type="text"
-            name="number"
-            id={numberFieldId}
-          />
           <ErrorMessage className={css.error} name="number" component="span" />
 
-          <button className={css.btn} type="submit">
-            Save
-          </button>
-          <button className={css.btn} type="button" onClick={handleCancel}>
-            Cancel
-          </button>
+          <div className={css.btns}>
+            <button className={css.btnSave} type="submit">
+              Save
+            </button>
+            <button
+              className={css.btnCancel}
+              type="button"
+              onClick={handleCancel}
+            >
+              Cancel
+            </button>
+          </div>
         </Form>
       </Formik>
     </Modal>

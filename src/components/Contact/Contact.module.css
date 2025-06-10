@@ -19,27 +19,28 @@
 .info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 12px;
   flex-grow: 1;
 }
 
-.item {
+.name {
   display: flex;
   align-items: center;
   gap: 8px;
   color: #5a4300;
-  font-size: 1rem;
-  font-weight: 400;
+  font-weight: 700;
 }
 
-.item:first-child {
-  font-weight: 600;
-  color: #7a5c00;
+.number {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #5a4300;
+  font-weight: 400;
 }
 
 .icon {
   color: #e1c97a;
-  font-size: 1.2rem;
 }
 
 .buttons {
@@ -50,13 +51,12 @@
 
 .button,
 .btn {
-  background-color: #e1c97a;
+  background-color: transparent;
   border: none;
   border-radius: 5px;
   padding: 6px 12px;
   cursor: pointer;
-  color: #3f2f00;
-  font-size: 1rem;
+  color: #ead07b;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -67,12 +67,14 @@
 .button:hover,
 .btn:hover {
   background-color: #ccb35e;
+  color: #5a4300;
   transform: translateY(1px);
 }
 
 .button:active,
 .btn:active {
   background-color: #b09a49;
+  color: #5a4300;
   transform: translateY(2px);
 }
 

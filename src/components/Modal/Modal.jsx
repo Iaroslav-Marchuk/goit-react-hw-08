@@ -1,8 +1,11 @@
 import { createPortal } from "react-dom";
-import css from "./Modal.module.css";
 import { useEffect } from "react";
+import { FaTimes } from "react-icons/fa";
+import Fade from "@mui/material/Fade";
 
-const Modal = ({ children, onClose }) => {
+import css from "./Modal.module.css";
+
+const Modal = ({ children, onClose, isOpen = true }) => {
   const handleBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -32,16 +35,18 @@ const Modal = ({ children, onClose }) => {
       role="dialog"
       aria-modal="true"
     >
-      <div className={css.modal}>
-        <button
-          className={css.closeBtn}
-          onClick={onClose}
-          aria-label="Close modal"
-        >
-          &times;
-        </button>
-        {children}
-      </div>
+      <Fade in={isOpen} timeout={600}>
+        <div className={css.modal}>
+          <button
+            className={css.closeBtn}
+            onClick={onClose}
+            aria-label="Close modal"
+          >
+            <FaTimes />
+          </button>
+          {children}
+        </div>
+      </Fade>
     </div>,
     document.getElementById("modal-root")
   );

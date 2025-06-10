@@ -1,8 +1,7 @@
 .wrapper {
   display: flex;
-  align-items: center; /* вертикальне вирівнювання по центру */
+  align-items: center;
   gap: 16px;
-  /* background-color: transparent; */ /* без фону */
   color: #7f6f33;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -12,11 +11,11 @@
   font-size: 16px;
   color: #968858;
   user-select: none;
-  margin: 0; /* щоб не було зайвих відступів */
+  margin: 0;
 }
 
 .btn {
-  background-color: transparent; /* без фону */
+  background-color: transparent;
   border: 1.5px solid #968858;
   border-radius: 6px;
   padding: 6px 14px;

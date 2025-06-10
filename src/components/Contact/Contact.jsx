@@ -1,6 +1,7 @@
 import { FaUser, FaPhone, FaTrash, FaPen } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 import ConfirmDelete from "../ConfirmDelete/ConfirmDelete";
 
@@ -17,19 +18,26 @@ const Contact = ({ contact, onEdit }) => {
   const closeConfirm = () => setConfirm(false);
 
   const handleDelete = () => {
-    dispatch(deleteContact(contact.id));
-    closeConfirm();
+    dispatch(deleteContact(contact.id))
+      .unwrap()
+      .then(() => {
+        toast.success("Contact deleted succesfully!");
+        closeConfirm();
+      })
+      .catch(() => {
+        toast.error("Failed to delete contact.");
+      });
   };
 
   return (
     <>
       <div className={css.card}>
         <div className={css.info}>
-          <p className={css.item}>
+          <p className={css.name}>
             <FaUser className={css.icon} />
             {contact.name}
           </p>
-          <p className={css.item}>
+          <p className={css.number}>
             <FaPhone className={css.icon} />
             {`${contact.number.slice(0, 3)}-${contact.number.slice(
               3,

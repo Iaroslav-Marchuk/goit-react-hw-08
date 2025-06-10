@@ -1,11 +1,28 @@
-.link {
-  display: inline-block;
-  text-decoration: none;
-  padding: 12px;
-  font-weight: 700;
-  color: #2a363b;
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.link.active {
-  color: #e84a5f;
+.link {
+  color: #bfb56d;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  user-select: none;
+}
+
+.link:hover {
+  background-color: #968858;
+  color: #fffbea;
+}
+
+.active {
+  background-color: #ead07b;
+  color: #604f04;
+  font-weight: 700;
+  box-shadow: 0 0 8px #968858cc;
 }

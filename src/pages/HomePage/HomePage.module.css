@@ -2,7 +2,6 @@
   background-color: bisque;
   padding: 24px;
   border-radius: 8px;
-  max-width: 800px;
   margin: 24px auto;
   color: #7f6f33;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -10,14 +9,33 @@
   line-height: 1.6;
 }
 
-h1 {
+.title {
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 32px;
   margin-bottom: 16px;
   color: #968858;
 }
 
-p {
+.text {
   margin-bottom: 16px;
-  font-size: 1rem;
+}
+
+.linkBtn {
+  display: inline-block;
+  color: #604f04;
+  padding: 0px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.linkBtn:hover {
+  color: #fffbea;
+  background-color: #997800;
+  transform: translateY(1px);
+}
+
+.linkBtn:active {
+  background-color: #735e00;
 }

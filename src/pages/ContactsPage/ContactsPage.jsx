@@ -1,23 +1,33 @@
 import { useDispatch, useSelector } from "react-redux";
-import css from "./ContactsPage.module.css";
+import { FaUserPlus } from "react-icons/fa";
+import { useEffect, useState } from "react";
+
+import Loader from "../../components/Loader/Loader";
+import ContactList from "../../components/ContactList/ContactList";
+import ContactForm from "../../components/ContactForm/ContactForm";
+import SearchBox from "../../components/SearchBox/SearchBox";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+
 import {
   selectContacts,
   selectError,
   selectIsLoading,
 } from "../../redux/contacts/selectors";
-import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contacts/operations";
-import ContactList from "../../components/ContactList/ContactList";
-import ContactForm from "../../components/ContactForm/ContactForm";
-import SearchBox from "../../components/SearchBox/SearchBox";
 
-import Loader from "../../components/Loader/Loader";
+import css from "./ContactsPage.module.css";
 
 const ContactsPage = () => {
+  const [modalOpen, setModalIsOpen] = useState(false);
+
   const dispatch = useDispatch();
+
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+
+  const openModal = () => setModalIsOpen(true);
+  const closeModal = () => setModalIsOpen(false);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -25,9 +35,16 @@ const ContactsPage = () => {
 
   return (
     <div className={css.wrapper}>
-      <h1 className={css.title}>Phonebook</h1>
-      <ContactForm />
       <SearchBox />
+
+      <button className={css.btn} type="button" onClick={openModal}>
+        <div className={css.btnContent}>
+          <FaUserPlus className={css.icon} />
+          <span>Create new contact</span>
+        </div>
+      </button>
+
+      {modalOpen && <ContactForm onClose={closeModal} />}
 
       {isLoading && <Loader loadingState={isLoading} />}
       {error && <ErrorMessage message={error} />}
